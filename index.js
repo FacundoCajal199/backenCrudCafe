@@ -1,5 +1,5 @@
 import express from 'express'
-console.log('tercer prueba back')
+import cors from'cors'
 
 //tomar puerto
 //crear una instancia de express
@@ -11,7 +11,8 @@ app.listen(app.get('port'), ()=>{
 })
 
 //midlleware
-
+app.use(cors());  //permite conexiones remotas
+app.use(express.json());//puedo tomar del objeto request datos en formato json.
 
 
 //rutas
