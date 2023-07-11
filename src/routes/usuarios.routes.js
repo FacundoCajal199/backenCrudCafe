@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
   crearUsuario,
+  login,
   obtenerUnUsuario,
   obtenerUsuarios,
 } from "../controllers/usuarios.controlers";
@@ -10,8 +11,8 @@ import validarUsuario from "../helpers/validarUsuario";
 
 const router = Router();
 
-router.get("/usuarios", obtenerUsuarios);
+router.get("/usuarios", obtenerUsuarios).post(validarUsuario, crearUsuario);
 router.get("/usuarios/:id", obtenerUnUsuario);
-router.post("/usuarios",validarUsuario, crearUsuario);
+router.post('/',login)
 
 export default router;
