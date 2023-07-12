@@ -48,7 +48,8 @@ export const login = async (req, res) => {
       });
     }
     //preguntar si el  password no coincide
-    if (usuario.password !== password) {
+    const passwordValido = bcrypt.compareSync(password, usuario.password)
+    if (passwordValido=== false) {
       return res.status(400).json({
         mensaje: "correo o password invalido (password)",
       });
