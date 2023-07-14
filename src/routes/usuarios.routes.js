@@ -14,6 +14,6 @@ router.route("/usuarios").get(obtenerUsuarios).post(validarUsuario, crearUsuario
 
 router.route("/usuarios/:id").get(obtenerUnUsuario);
 
-router.route("/").post(validarUsuario, login);
+router.route("/").post(login);
 
 export default router;
