@@ -1,3 +1,4 @@
+import generarJWT from "../helpers/token-sign";
 import Usuario from "../models/usuario";
 import bcrypt from "bcrypt"
 export const obtenerUsuarios = async (req, res) => {
@@ -54,11 +55,14 @@ export const login = async (req, res) => {
         mensaje: "correo o password invalido (password)",
       });
     }
+//generar token
+    const token = await generarJWT(usuario._id, usuario.nombreUsuario )
     //responder
     res.status(200).json({
       mensaje: "el usuario existe",
       nombreUsuario: usuario.nombreUsuario,
       uid: usuario._id,
+      token
     });
   } catch (error) {
     console.log(error);
